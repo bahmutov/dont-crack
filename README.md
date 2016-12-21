@@ -9,7 +9,7 @@
 [![js-standard-style][standard-image]][standard-url]
 
 This is [semantic release](https://github.com/semantic-release/semantic-release)
-[verifyRelease** plugin](https://github.com/semantic-release/semantic-release#verifyrelease).
+[verifyRelease plugin](https://github.com/semantic-release/semantic-release#verifyrelease).
 
 ### Small print
 
