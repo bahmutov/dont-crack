@@ -8,8 +8,46 @@
 [![semantic-release][semantic-image] ][semantic-url]
 [![js-standard-style][standard-image]][standard-url]
 
-This is [semantic release](https://github.com/semantic-release/semantic-release)
-[verifyRelease plugin](https://github.com/semantic-release/semantic-release#verifyrelease).
+This is [semantic-release](https://github.com/semantic-release/semantic-release)
+plugin for the
+[verifyRelease](https://github.com/semantic-release/semantic-release#verifyrelease)
+step.
+
+It ensures that a minor or a patch update to your module does NOT break
+modules that depend on it. A major version upgrade is allowed to break the
+dependent projects.
+
+## Configuration
+
+Install NPM plugin `npm i -D dont-crack` (assuming you have
+`semantic-release` already installed).
+
+Add "release" configuration block and list all the projects (as github repos
+for now) which depend on your module and that you don't want to break
+accidentally. For example, if you want to test new release before publishing
+it against modules "foo" and "bar"
+
+```json
+{
+  "release": {
+    "verifyRelease": {
+      "path": "dont-crack",
+      "test-against": [
+        "https://github.com/bahmutov/foo",
+        "https://github.com/bahmutov/bar"
+      ]
+    }
+  }
+}
+```
+
+That's it. If there is new "minor" or "patch" semantic version determined
+from the commit log, it will be tested against these two repos.
+
+## Debug
+
+If something goes wrong, you can see the messages from this plugin by running
+with `DEBUG=dont-crack ...` environment variable.
 
 ### Small print
 

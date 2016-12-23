@@ -42,7 +42,6 @@
   ],
   "license": "MIT",
   "main": "src/",
-  "noScopeName": "dont-crack",
   "publishConfig": {
     "registry": "http://registry.npmjs.org/"
   },

@@ -37,7 +37,11 @@ function dontCrack (opts, config, callback) {
     callback(new Error(s))
   }
 
-  dontBreak()
+  const options = {
+    // list of dependent projects to test against new release
+    dep: opts['test-against']
+  }
+  dontBreak(options)
     .catch(function (err) {
       console.error('dont-break error?', err)
       callback(alwaysError(err))
