@@ -17,6 +17,8 @@ It ensures that a minor or a patch update to your module does NOT break
 modules that depend on it. A major version upgrade is allowed to break the
 dependent projects.
 
+Uses [dont-break](https://github.com/bahmutov/dont-break) internally.
+
 ## Configuration
 
 Install NPM plugin `npm i -D dont-crack` (assuming you have
