@@ -24,10 +24,11 @@ Uses [dont-break](https://github.com/bahmutov/dont-break) internally.
 Install NPM plugin `npm i -D dont-crack` (assuming you have
 `semantic-release` already installed).
 
-Add "release" configuration block and list all the projects (as github repos
-for now) which depend on your module and that you don't want to break
-accidentally. For example, if you want to test new release before publishing
-it against modules "foo" and "bar"
+Add the "release" configuration block to your "package.json" and list all the
+projects (as github repos for now) which depend on your module and
+that you don't want to break accidentally.
+For example, if you want to test the new release against repos
+"bahmutov/foo" and "bahmutov/bar".
 
 ```json
 {
@@ -43,8 +44,10 @@ it against modules "foo" and "bar"
 }
 ```
 
-That's it. If there is new "minor" or "patch" semantic version determined
-from the commit log, it will be tested against these two repos.
+That's it. If there is a new "minor" or "patch" semantic version determined
+from the commit log, it will be tested against these two repos. If their
+tests pass with the new dependency, the semantic release process will
+continue. If not, it will be aborted.
 
 ## Debug
 
