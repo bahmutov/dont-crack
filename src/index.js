@@ -4,7 +4,7 @@ const la = require('lazy-ass')
 const dontBreak = require('dont-break')
 const alwaysError = require('always-error')
 
-const isReleaseType = is.oneOf(['major', 'minor', 'patch'])
+const isReleaseType = is.oneOf(['major', 'minor', 'patch', 'initial'])
 
 function dontCrack (opts, config, callback) {
   log('dont-crack arguments')
@@ -16,6 +16,11 @@ function dontCrack (opts, config, callback) {
 
   la(isReleaseType(config.nextRelease.type),
     'invalid next release type', config.nextRelease)
+
+  if (config.nextRelease.type === 'initial') {
+    log('initial release')
+    return callback()
+  }
 
   if (config.nextRelease.type === 'major') {
     log('major release will crack dependents by definition')
